@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\UserRepository;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, UserRepository $users)
     {
-        return view('home');
+        $subscriptionVideos = $users->videosFromSubscriptions($request->user());
+
+        return view('home', compact('subscriptionVideos'));
     }
 }
