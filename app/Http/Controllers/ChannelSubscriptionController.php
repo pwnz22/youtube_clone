@@ -22,6 +22,6 @@ class ChannelSubscriptionController extends Controller
             ]);
          }
 
-        return response()->json([ 'data' => $response ], 200);
+        return response()->json($response, 200);
     }
 }

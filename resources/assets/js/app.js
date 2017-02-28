@@ -5,6 +5,7 @@ import VideoUpload from './components/VideoUpload.vue'
 import VideoPlayer from './components/VideoPlayer.vue'
 import VideoVoting from './components/VideoVoting.vue'
 import VideoComments from './components/VideoComments.vue'
+import SubscribeButton from './components/SubscribeButton.vue'
 
 const app = new Vue({
     el: '#app',
@@ -15,6 +16,7 @@ const app = new Vue({
         VideoUpload,
         VideoPlayer,
         VideoVoting,
-        VideoComments
+        VideoComments,
+        SubscribeButton
     }
 })
