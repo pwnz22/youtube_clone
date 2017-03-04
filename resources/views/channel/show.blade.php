@@ -17,6 +17,9 @@
                                     <li>
                                         <subscribe-button channel-slug="{{ $channel->slug }}"></subscribe-button>
                                     </li>
+                                    <li>
+                                        {{ $channel->totalVideoViews() }} video {{ str_plural('view', $channel->totalVideoViews()) }}
+                                    </li>
 
                                     @if ($channel->description)
                                         <hr>
