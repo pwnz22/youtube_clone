@@ -32,4 +32,11 @@ class ChannelUpdateRequest extends FormRequest
             'description' => 'max:1000'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'slug.unique' => 'Это уникальное название канала уже занято.'
+        ];
+    }
 }

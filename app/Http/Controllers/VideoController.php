@@ -6,6 +6,7 @@ use App\Models\Video;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Requests\VideoUpdateRequest;
+use App\Http\Requests\VideoCreateRequest;
 
 class VideoController extends Controller
 {
@@ -45,7 +46,7 @@ class VideoController extends Controller
         return redirect()->back();
     }
 
-    public function store(Request $request)
+    public function store(VideoCreateRequest $request)
     {
         $uid = uniqid(true);
         $channel = $request->user()->channel()->first();
