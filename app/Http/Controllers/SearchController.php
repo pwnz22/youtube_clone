@@ -14,7 +14,7 @@ class SearchController extends Controller
             return redirect('/');
 
         $channels = Channel::search(request()->q)->take(5)->get();
-        $videos = Video::search(request()->q)->get();
+        $videos = Video::search(request()->q)->where('visible', true)->get();
 
         return view('search.index', compact('channels', 'videos'));
     }
