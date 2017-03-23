@@ -41,7 +41,9 @@ class TwitterAuthController extends Controller
         $request->user()->token()->delete();
 
         $request->user()->token()->create([
-            'access_token' => $response->access_token
+            'access_token' => $response->access_token,
+            'refresh_token' => $response->refresh_token,
+            'expires_in' => $response->expires_in
         ]);
 
         return redirect('/home');
