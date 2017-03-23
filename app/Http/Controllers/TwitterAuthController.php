@@ -18,7 +18,7 @@ class TwitterAuthController extends Controller
             'client_id' => '5',
             'redirect_uri' => 'http://youtubeclone/auth/twitter/callback',
             'response_type' => 'code',
-            'scope' => 'view-tweets'
+            'scope' => 'view-tweets post-tweets'
         ]);
 
         return redirect('http://api_auth/oauth/authorize?' . $query);
@@ -47,5 +47,28 @@ class TwitterAuthController extends Controller
         ]);
 
         return redirect('/home');
+    }
+
+    public function refresh(Request $request)
+    {
+        $response = $this->client->post('http://api_auth/oauth/token', [
+            'form_params' => [
+                'grant_type' => 'refresh_token',
+                'refresh_token' => $request->user()->token->refresh_token,
+                'client_id' => '5',
+                'client_secret' => 'unwGexaiA8YYtgT0U6TXoFwce1EthFWRklcuXgDP',
+                'scope' => 'view-tweets post-tweets'
+            ]
+        ]);
+
+        $response = json_decode($response->getBody());
+
+        $request->user()->token()->update([
+            'access_token' => $response->access_token,
+            'expires_in' => $response->expires_in,
+            'refresh_token' => $response->refresh_token
+        ]);
+
+        return redirect()->back();
     }
 }

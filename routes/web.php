@@ -6,7 +6,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'refresh.twitter'], function () {
+    Route::get('/home', 'HomeController@index');
+});
+
 Route::post('videos/{video}/views', 'VideoViewController@create');
 
 Route::get('/videos/{video}', 'VideoController@show');
@@ -24,6 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
     //-------- OAuth
     Route::get('/auth/twitter', 'TwitterAuthController@redirect');
     Route::get('/auth/twitter/callback', 'TwitterAuthController@callback');
+    Route::get('/auth/twitter/refresh', 'TwitterAuthController@refresh');
     //-------- end OAuth
     Route::get('/upload', 'VideoUploadController@index');
     Route::post('/upload', 'VideoUploadController@store');
