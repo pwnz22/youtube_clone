@@ -12,7 +12,8 @@
         "laravel/framework": "5.3.*",
         "laravel/scout": "2",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "spatie/laravel-fractal": "^3.5"
+        "spatie/laravel-fractal": "^3.5",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

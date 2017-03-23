@@ -14,6 +14,8 @@
                                 @include('video.partials._video_result', compact('video'))
                             </div>
                         @endforeach
+                    @else
+                        You are logged in.
                     @endif
                 </div>
             </div>

@@ -21,6 +21,10 @@ Route::get('/subscription/{channel}', 'ChannelSubscriptionController@show');
 Route::get('/channel/{channel}', 'ChannelController@show');
 
 Route::group(['middleware' => ['auth']], function () {
+    //-------- OAuth
+    Route::get('/auth/twitter', 'TwitterAuthController@redirect');
+    Route::get('/auth/twitter/callback', 'TwitterAuthController@callback');
+    //-------- end OAuth
     Route::get('/upload', 'VideoUploadController@index');
     Route::post('/upload', 'VideoUploadController@store');
 
