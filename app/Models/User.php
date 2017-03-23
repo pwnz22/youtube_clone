@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return (bool) $this->channel->where('id', $channel->id)->count();
     }
+
+    public function token()
+    {
+        return $this->hasOne(Token::class);
+    }
 }
