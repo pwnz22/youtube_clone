@@ -32,7 +32,7 @@
                                 @endforeach
                             @endif
                         @else
-                            <p>Please <a href="{{ url('/oauth/twitter') }}">authorize with Twitter</a></p>
+                            <p>Please <a href="{{ url('/auth/twitter') }}">authorize with Twitter</a></p>
                         @endif
                     @endif
                 </div>

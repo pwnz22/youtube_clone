@@ -18,7 +18,7 @@ class TwitterAuthController extends Controller
             'client_id' => '5',
             'redirect_uri' => 'http://youtubeclone/auth/twitter/callback',
             'response_type' => 'code',
-            'scope' => '*'
+            'scope' => 'view-tweets'
         ]);
 
         return redirect('http://api_auth/oauth/authorize?' . $query);
